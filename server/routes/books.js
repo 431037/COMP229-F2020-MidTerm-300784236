@@ -58,6 +58,16 @@ router.get("/:id", (req, res, next) => {
   /*****************
    * ADD CODE HERE *
    *****************/
+  let id = req.params.id;
+  book.findById(id, (err, bookToEdit) => {
+    if (err) res.end(err);
+    else {
+      res.render("books/details", {
+        title: "Book list",
+        books: bookToEdit,
+      });
+    }
+  });
 });
 
 // POST - process the information passed from the details form and update the document
@@ -65,6 +75,24 @@ router.post("/:id", (req, res, next) => {
   /*****************
    * ADD CODE HERE *
    *****************/
+  let id = req.params.id;
+  const {Title, Price, Author, Genre, Description} = req.body;
+
+  const updatedBook = new book({
+    _id: id,
+    Title,
+    Price,
+    Author,
+    Genre,
+    Description,
+  });
+  book.updateOne({_id: id}, updatedBook, (err) => {
+    if (err) {
+      res.end(err);
+    } else {
+      res.redirect("/books");
+    }
+  });
 });
 
 // GET - process the delete by user id
