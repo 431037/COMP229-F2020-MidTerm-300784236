@@ -100,6 +100,11 @@ router.get("/delete/:id", (req, res, next) => {
   /*****************
    * ADD CODE HERE *
    *****************/
+  let id = req.params.id;
+  book.deleteOne({_id: id}, (err) => {
+    if (err) res.end(err);
+    else res.redirect("/books");
+  });
 });
 
 module.exports = router;
