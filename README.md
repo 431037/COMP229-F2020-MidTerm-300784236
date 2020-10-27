@@ -8,6 +8,6 @@ Run Project using **`nodemon`** or **`npm start`**
 
 Server will be running on localhost:3000
 
-By: Ishan Gangji
-Student#: 300784236
-Date: 10/26/1995
+###By: Ishan Gangji
+###Student#: 300784236
+###Date: 10/26/1995
